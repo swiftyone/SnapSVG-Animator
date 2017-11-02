@@ -1687,3 +1687,5 @@ function SVGAnim(data, w, h, fps, params) {
     window.SVGAnim = SVGAnim;
     return SVGAnim;
 }(window || this));
+
+exports.SVGAnim = SVGAnim;
