@@ -1,4 +1,4 @@
-var snapsvg = require("snapsvg");
+var Snap = require("snapsvg");
 
 var SVGAnim = (function (root) {
     SVGAnim.version = "0.0.2";
@@ -118,7 +118,7 @@ var Bitmap = function (parentMC,resourceManager,charId,ObjectId,placeAfter,trans
         }
 
         transformArray = transform.split(",");
-        transformMat = new snapsvg.Snap.Matrix(transformArray[0],transformArray[1],transformArray[2],transformArray[3],transformArray[4],transformArray[5]);
+        transformMat = new Snap.Matrix(transformArray[0],transformArray[1],transformArray[2],transformArray[3],transformArray[4],transformArray[5]);
         instance.el.transform(transformMat);
 
         if (placeAfter && parseInt(placeAfter) !== 0) {
@@ -168,7 +168,7 @@ var Text = function (parentMC,resourceManager,charId,ObjectId,placeAfter,transfo
         }
 
         transformArray = transform.split(",");
-        transformMat = new snapsvg.Snap.Matrix(transformArray[0],transformArray[1],transformArray[2],transformArray[3],transformArray[4],transformArray[5]);
+        transformMat = new Snap.Matrix(transformArray[0],transformArray[1],transformArray[2],transformArray[3],transformArray[4],transformArray[5]);
         instance.el.transform(transformMat);
 
         if (placeAfter && parseInt(placeAfter) !== 0) {
@@ -350,7 +350,7 @@ var Shape = function (parentMC,resourceManager,charId,ObjectId,placeAfter,transf
         }
 
         transformArray = transform.split(",");
-        transformMat = new snapsvg.Snap.Matrix(transformArray[0],transformArray[1],transformArray[2],transformArray[3],transformArray[4],transformArray[5]);
+        transformMat = new Snap.Matrix(transformArray[0],transformArray[1],transformArray[2],transformArray[3],transformArray[4],transformArray[5]);
         instance.el.transform(transformMat);
 
         if (placeAfter && parseInt(placeAfter) !== 0) {
@@ -412,7 +412,7 @@ var Shape = function (parentMC,resourceManager,charId,ObjectId,placeAfter,transf
 
         patternArray = resourceImg.patternTransform.split(",");						
         p = 0;
-        mat = new snapsvg.Snap.Matrix(patternArray[p],patternArray[p+1],patternArray[p+1],patternArray[p+3],patternArray[p+4],patternArray[p+5]);
+        mat = new Snap.Matrix(patternArray[p],patternArray[p+1],patternArray[p+1],patternArray[p+3],patternArray[p+4],patternArray[p+5]);
         src = resourceImg.bitmapPath;
         
         exists = parentMC.el.paper.select('defs pattern image');
@@ -592,7 +592,7 @@ var MovieClip = function (commandTimeline, s, resourceManager, objectID, name, t
     this.playing = true;
     this.resourceManager = resourceManager;
     this.commandList = [];
-    this.matrix = new snapsvg.Snap.Matrix();
+    this.matrix = new Snap.Matrix();
 
     if (typeof(this.m_timeline.Label) !== 'undefined') {
       this._labels = this.m_timeline.Label;
@@ -602,7 +602,7 @@ var MovieClip = function (commandTimeline, s, resourceManager, objectID, name, t
     {
         transformData = this.transform;
         transformArray = transformData.split(",");
-        this.matrix = new snapsvg.Snap.Matrix(transformArray[0],transformArray[1],transformArray[2],transformArray[3],transformArray[4],transformArray[5]);
+        this.matrix = new Snap.Matrix(transformArray[0],transformArray[1],transformArray[2],transformArray[3],transformArray[4],transformArray[5]);
         this.el.transform(this.matrix);
     }
 
@@ -740,7 +740,7 @@ MovieClip.prototype.getMatrix = function () {
   if (this.matrix) {
     return this.matrix;
   } else {
-    return new snapsvg.Snap.Matrix();
+    return new Snap.Matrix();
   }
 }
 
@@ -1237,7 +1237,7 @@ MovieClip.prototype.log = function () {
 
         transform =  this.m_transform;
         transformArray = transform.split(",");
-        transformMat = new snapsvg.Snap.Matrix(transformArray[0],transformArray[1],transformArray[2],transformArray[3],transformArray[4],transformArray[5]);
+        transformMat = new Snap.Matrix(transformArray[0],transformArray[1],transformArray[2],transformArray[3],transformArray[4],transformArray[5]);
 
         child = parentMC.getChildById(this.m_objectID);
 				child.matrix = transformMat;
@@ -1518,7 +1518,7 @@ function SVGAnim(data, w, h, fps, params) {
 
     instance.version = '1.2.1';
 
-    msg = 'snapsvg.Snap.svg Animator v' + instance.version;
+    msg = 'Snap.svg Animator v' + instance.version;
     console.log("%c" + msg, "color:" + color + ";font-weight:bold;");
 
     params = params|| {};
@@ -1540,7 +1540,7 @@ function SVGAnim(data, w, h, fps, params) {
     instance.resourceManager = new ResourceManager(data);
 
     //TODO:: RENDERER
-    instance.s = new snapsvg.Snap(w, h);
+    instance.s = new Snap(w, h);
     id = instance.s.id;
     instance.s.attr('id', id);
     instance.s.attr('viewBox', "0 0 " + w + " " + h);
