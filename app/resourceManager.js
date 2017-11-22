@@ -39,8 +39,6 @@ var ResourceManager = function (data) {
             this.m_movieClips[id] = movieClipData;
         }
     }
-
-    console.log(this.m_data.DOMDocument);
 };
 
 //Member functions

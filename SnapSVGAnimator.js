@@ -1,4 +1,4 @@
-var Snap = require("snapsvg");
+var Snap = require("snapsvg-cjs");
 
 var SVGAnim = (function (root) {
     SVGAnim.version = "0.0.2";
